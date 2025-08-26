@@ -10,6 +10,21 @@ export default function EcommerceHomepage() {
     offer: ''
   });
 
+  // State for current page
+  const [currentPage, setCurrentPage] = useState('Home');
+
+  // Navigation items array
+  const navItems = [
+    { name: 'Home', path: 'home' },
+    { name: 'Shirts', path: 'shirts' },
+    { name: '2 Piece', path: 'two-piece' },
+    { name: '3 Piece', path: 'three-piece' },
+    { name: 'Embroidered', path: 'embroidered' },
+    { name: 'Men\'s', path: 'mens' },
+    { name: 'Perfumes', path: 'perfumes' },
+    { name: 'Track Orders', path: 'track-orders' }
+  ];
+
   const products = [
     {
       id: 1,
@@ -69,6 +84,11 @@ export default function EcommerceHomepage() {
     console.log('Toggled wishlist for product:', productId);
   };
 
+  const handleNavClick = (path) => {
+    setCurrentPage(path);
+    console.log('Navigated to:', path); // For demo purposes; replace with actual routing logic
+  };
+
   // SVG Icons as components
   const SearchIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -98,19 +118,6 @@ export default function EcommerceHomepage() {
     </svg>
   );
 
-  const PhoneIcon = () => (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-    </svg>
-  );
-
-  const MapPinIcon = () => (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-      <circle cx="12" cy="10" r="3"></circle>
-    </svg>
-  );
-
   const ChevronDownIcon = ({ size = 16 }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="m6 9 6 6 6-6"></path>
@@ -129,6 +136,14 @@ export default function EcommerceHomepage() {
     </svg>
   );
 
+  const MenuIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  );
+
   const getBadgeColor = (badge) => {
     switch (badge) {
       case 'Popular': return 'bg-blue-500';
@@ -143,31 +158,91 @@ export default function EcommerceHomepage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg transform hover:scale-105 transition-transform">
-                <ShoppingCartIcon />
+        <div className="max-w-7xl mx-4 px-4 py-3">
+          <div className="flex items-center justify-between gap-4">
+            {/* Logo - Fixed width */}
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <div className="w-12 h-12 flex items-center justify-center">
+                <img src="/assets/logo.svg" alt="" />
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-emerald-800 to-teal-600 bg-clip-text text-transparent">
-                Shopcart
+              <span className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-emerald-800 to-teal-600 bg-clip-text text-transparent">
+                NovaShop
               </span>
             </div>
 
-            {/* Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
-              <div className="flex items-center gap-1 cursor-pointer hover:text-emerald-800 transition-colors px-3 py-2 rounded-lg hover:bg-emerald-50 group">
-                <span className="font-medium">Categories</span>
-                <ChevronDownIcon size={16} className="group-hover:rotate-180 transition-transform" />
-              </div>
-              <a href="#" className="hover:text-emerald-800 transition-colors px-3 py-2 rounded-lg hover:bg-emerald-50 font-medium">Deals</a>
-              <a href="#" className="hover:text-emerald-800 transition-colors px-3 py-2 rounded-lg hover:bg-emerald-50 font-medium">What's New</a>
-              <a href="#" className="hover:text-emerald-800 transition-colors px-3 py-2 rounded-lg hover:bg-emerald-50 font-medium">Delivery</a>
+            {/* Navigation - Optimized for space */}
+            <nav className="hidden xl:flex items-center gap-3 flex-shrink-0">
+              {navItems.map((item) => (
+                <div
+                  key={item.path}
+                  onClick={() => handleNavClick(item.path)}
+                  className={`flex items-center gap-1 cursor-pointer transition-colors px-4 py-2 rounded-lg hover:bg-emerald-50 ${
+                    currentPage === item.path ? 'text-emerald-800 bg-emerald-50' : 'hover:text-emerald-800'
+                  }`}
+                >
+                  <span className="font-medium text-base">{item.name}</span>
+                </div>
+              ))}
             </nav>
 
-            {/* Search Bar */}
-            <div className="hidden md:flex items-center bg-gradient-to-r from-gray-50 to-white rounded-2xl px-6 py-3 w-80 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+            {/* Search Bar - Flexible width */}
+            <div className="hidden md:flex items-center bg-gradient-to-r from-gray-50 to-white rounded-2xl px-4 py-2.5 flex-1 w-96 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+              <input 
+                type="text" 
+                placeholder="Search Product"
+                className="bg-transparent outline-none flex-1 text-sm placeholder-gray-400 w-96"
+              />
+              <div className="text-gray-400 cursor-pointer hover:text-emerald-600 transition-colors p-1 rounded-lg hover:bg-emerald-50">
+                <SearchIcon />
+              </div>
+            </div>
+
+            {/* Actions - Fixed width */}
+            <div className="flex items-center gap-3 flex-shrink-0">
+              {/* Account */}
+              <button className="hidden sm:flex items-center gap-2 hover:text-emerald-800 transition-colors px-2 py-1.5 rounded-lg hover:bg-emerald-50 group">
+                <div className="transform group-hover:scale-110 transition-transform">
+                  <UserIcon />
+                </div>
+                <span className="font-medium text-sm">Account</span>
+              </button>
+              
+              {/* Cart */}
+              <button className="flex items-center gap-2 hover:text-emerald-800 transition-colors px-2 py-1.5 rounded-lg hover:bg-emerald-50 group relative">
+                <div className="transform group-hover:scale-110 transition-transform">
+                  <ShoppingCartIcon />
+                </div>
+                <span className="hidden sm:inline font-medium text-sm">Cart</span>
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+              </button>
+
+              {/* Mobile Menu Button */}
+              <button className="xl:hidden p-2 hover:bg-emerald-50 rounded-lg transition-colors">
+                <MenuIcon />
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className="xl:hidden mt-4 pt-4 border-t border-gray-200">
+            <div className="flex flex-wrap gap-2">
+              {navItems.map((item) => (
+                <div
+                  key={item.path}
+                  onClick={() => handleNavClick(item.path)}
+                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                    currentPage === item.path
+                      ? 'bg-emerald-100 text-emerald-800'
+                      : 'hover:bg-emerald-50 hover:text-emerald-800'
+                  }`}
+                >
+                  {item.name}
+                </div>
+              ))}
+            </div>
+            
+            {/* Mobile Search */}
+            <div className="md:hidden mt-3 flex items-center bg-gradient-to-r from-gray-50 to-white rounded-2xl px-4 py-2.5 shadow-sm border border-gray-200">
               <input 
                 type="text" 
                 placeholder="Search Product"
@@ -176,23 +251,6 @@ export default function EcommerceHomepage() {
               <div className="text-gray-400 cursor-pointer hover:text-emerald-600 transition-colors p-1 rounded-lg hover:bg-emerald-50">
                 <SearchIcon />
               </div>
-            </div>
-
-            {/* Actions */}
-            <div className="flex items-center gap-4">
-              <button className="flex items-center gap-2 hover:text-emerald-800 transition-colors px-3 py-2 rounded-lg hover:bg-emerald-50 group">
-                <div className="transform group-hover:scale-110 transition-transform">
-                  <UserIcon />
-                </div>
-                <span className="hidden sm:inline font-medium">Account</span>
-              </button>
-              <button className="flex items-center gap-2 hover:text-emerald-800 transition-colors px-3 py-2 rounded-lg hover:bg-emerald-50 group relative">
-                <div className="transform group-hover:scale-110 transition-transform">
-                  <ShoppingCartIcon />
-                </div>
-                <span className="hidden sm:inline font-medium">Cart</span>
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
-              </button>
             </div>
           </div>
         </div>
