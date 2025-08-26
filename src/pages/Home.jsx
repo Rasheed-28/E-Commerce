@@ -158,7 +158,7 @@ export default function EcommerceHomepage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-4 px-4 py-3">
+        <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between gap-4">
             {/* Logo - Fixed width */}
             <div className="flex items-center gap-3 flex-shrink-0">
@@ -190,7 +190,7 @@ export default function EcommerceHomepage() {
               <input 
                 type="text" 
                 placeholder="Search Product"
-                className="bg-transparent outline-none flex-1 text-sm placeholder-gray-400 w-96"
+                className="bg-transparent outline-none flex-1 text-sm placeholder-gray-400"
               />
               <div className="text-gray-400 cursor-pointer hover:text-emerald-600 transition-colors p-1 rounded-lg hover:bg-emerald-50">
                 <SearchIcon />
@@ -200,7 +200,7 @@ export default function EcommerceHomepage() {
             {/* Actions - Fixed width */}
             <div className="flex items-center gap-3 flex-shrink-0">
               {/* Account */}
-              <button className="hidden sm:flex items-center gap-2 hover:text-emerald-800 transition-colors px-2 py-1.5 rounded-lg hover:bg-emerald-50 group">
+              <button className="hidden sm:flex items-center gap-2 cursor-pointer hover:text-emerald-800 transition-colors px-2 py-1.5 rounded-lg hover:bg-emerald-50 group">
                 <div className="transform group-hover:scale-110 transition-transform">
                   <UserIcon />
                 </div>
@@ -208,7 +208,7 @@ export default function EcommerceHomepage() {
               </button>
               
               {/* Cart */}
-              <button className="flex items-center gap-2 hover:text-emerald-800 transition-colors px-2 py-1.5 rounded-lg hover:bg-emerald-50 group relative">
+              <button className="flex items-center gap-2 cursor-pointer hover:text-emerald-800 transition-colors px-2 py-1.5 rounded-lg hover:bg-emerald-50 group relative">
                 <div className="transform group-hover:scale-110 transition-transform">
                   <ShoppingCartIcon />
                 </div>
@@ -217,7 +217,7 @@ export default function EcommerceHomepage() {
               </button>
 
               {/* Mobile Menu Button */}
-              <button className="xl:hidden p-2 hover:bg-emerald-50 rounded-lg transition-colors">
+              <button className="xl:hidden p-2 hover:bg-emerald-50 rounded-lg transition-colors cursor-pointer">
                 <MenuIcon />
               </button>
             </div>
@@ -230,7 +230,7 @@ export default function EcommerceHomepage() {
                 <div
                   key={item.path}
                   onClick={() => handleNavClick(item.path)}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
                     currentPage === item.path
                       ? 'bg-emerald-100 text-emerald-800'
                       : 'hover:bg-emerald-50 hover:text-emerald-800'
@@ -279,10 +279,10 @@ export default function EcommerceHomepage() {
               </div>
               
               <div className="flex gap-4">
-                <button className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-2xl font-semibold hover:from-emerald-700 hover:to-teal-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+                <button className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-2xl font-semibold hover:from-emerald-700 hover:to-teal-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
                   Shop Now →
                 </button>
-                <button className="border-2 border-emerald-600 text-emerald-600 px-8 py-4 rounded-2xl font-semibold hover:bg-emerald-600 hover:text-white transition-all">
+                <button className="border-2 border-emerald-600 text-emerald-600 px-8 py-4 rounded-2xl font-semibold hover:bg-emerald-600 hover:text-white transition-all cursor-pointer">
                   Learn More
                 </button>
               </div>
@@ -291,7 +291,7 @@ export default function EcommerceHomepage() {
             <div className="flex-1 flex justify-end">
               <div className="relative">
                 <div className="w-80 h-80 md:w-96 md:h-96 bg-gradient-to-br from-purple-200 via-pink-200 to-orange-200 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
-                  <div className="text-8xl md:text-9xl transform hover:scale-110 transition-transform">🎧</div>
+                  <div className="text-8xl md:text-9xl transform hover:scale-110 transition-transform cursor-pointer">🎧</div>
                 </div>
                 <div className="absolute -top-4 -right-4 bg-red-500 text-white px-4 py-2 rounded-xl font-bold shadow-lg animate-bounce">
                   50% OFF
@@ -326,7 +326,7 @@ export default function EcommerceHomepage() {
               </div>
             ))}
             
-            <button className="flex items-center gap-2 bg-gradient-to-r from-gray-100 to-gray-200 px-6 py-2 rounded-xl hover:from-emerald-100 hover:to-teal-100 transition-all shadow-sm hover:shadow-md group">
+            <button className="flex items-center gap-2 bg-gradient-to-r from-gray-100 to-gray-200 px-6 py-2 rounded-xl hover:from-emerald-100 hover:to-teal-100 transition-all shadow-sm hover:shadow-md group cursor-pointer">
               <FilterIcon className="text-gray-600 group-hover:text-emerald-600 transition-colors" />
               <span className="font-medium text-gray-700 group-hover:text-emerald-800 transition-colors">All Filters</span>
             </button>
@@ -370,7 +370,7 @@ export default function EcommerceHomepage() {
                   
                   <button 
                     onClick={() => handleToggleWishlist(product.id)}
-                    className="absolute top-3 right-3 p-3 hover:bg-white rounded-full transition-all shadow-lg hover:shadow-xl transform hover:scale-110 backdrop-blur-sm bg-white/80"
+                    className="absolute top-3 right-3 p-3 hover:bg-white rounded-full transition-all shadow-lg hover:shadow-xl transform hover:scale-110 backdrop-blur-sm bg-white/80 cursor-pointer"
                   >
                     <div className="text-gray-400 hover:text-red-500 transition-colors">
                       <HeartIcon />
@@ -426,7 +426,7 @@ export default function EcommerceHomepage() {
                     
                     <button 
                       onClick={() => handleAddToCart(product.id)}
-                      className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-xl text-sm font-semibold hover:from-emerald-700 hover:to-teal-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
+                      className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-xl text-sm font-semibold hover:from-emerald-700 hover:to-teal-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
                     >
                       Add to Cart
                     </button>
@@ -453,7 +453,7 @@ export default function EcommerceHomepage() {
                 placeholder="Enter your email"
                 className="flex-1 px-6 py-4 rounded-2xl border-0 focus:outline-none focus:ring-4 focus:ring-white/20 bg-white/20 text-white placeholder-white/70 backdrop-blur-sm"
               />
-              <button className="bg-white text-emerald-800 px-8 py-4 rounded-2xl font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+              <button className="bg-white text-emerald-800 px-8 py-4 rounded-2xl font-semibold hover:bg-gray-100 transition-colors shadow-lg cursor-pointer">
                 Subscribe
               </button>
             </div>
