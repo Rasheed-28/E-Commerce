@@ -141,35 +141,6 @@ export default function EcommerceHomepage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Top Bar */}
-      <div className="bg-gradient-to-r from-emerald-800 to-teal-800 text-white py-2 text-sm shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 hover:text-emerald-200 transition-colors cursor-pointer">
-              <PhoneIcon />
-              <span>+012345678901</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-6">
-            <span className="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-semibold animate-pulse">
-              Get 50% Off on Selected Items
-            </span>
-            <span className="cursor-pointer hover:text-emerald-200 transition-colors font-medium">Shop Now</span>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1 cursor-pointer hover:text-emerald-200 transition-colors">
-                <span>Eng</span>
-                <ChevronDownIcon size={14} />
-              </div>
-              <div className="flex items-center gap-1 cursor-pointer hover:text-emerald-200 transition-colors">
-                <MapPinIcon />
-                <span>Location</span>
-                <ChevronDownIcon size={14} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 py-4">
